@@ -1,0 +1,24 @@
+{
+  "KPackageStructure": "Plasma/Applet",
+  "KPlugin": {
+    "Id": "org.xefensor.spatial.apps",
+    "Name": "Spatial Apps",
+    "Description": "Quick launch and parked window previews for a wide panel",
+    "Icon": "view-grid",
+    "Category": "Windows and Tasks",
+    "Version": "0.1.0",
+    "License": "GPL-2.0-or-later",
+    "Authors": [
+      {
+        "Name": "Xefensor"
+      }
+    ],
+    "Website": "https://github.com/xefensor/spatial-desktop-plasma"
+  },
+  "X-Plasma-API-Minimum-Version": "6.8",
+  "X-Plasma-MainScript": "ui/main.qml",
+  "X-Plasma-FormFactors": [
+    "vertical",
+    "planar"
+  ]
+}

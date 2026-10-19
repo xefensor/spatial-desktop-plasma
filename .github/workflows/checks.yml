@@ -1,0 +1,46 @@
+name: Check and package Plasma widget
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    container: opensuse/tumbleweed:latest
+    timeout-minutes: 20
+    env:
+      QT_QPA_PLATFORM: offscreen
+      QT_QUICK_BACKEND: software
+      QT_QUICK_CONTROLS_STYLE: Fusion
+    steps:
+      - name: Install Plasma and test dependencies
+        run: |
+          zypper --non-interactive refresh
+          zypper --non-interactive install --no-recommends \
+            git cmake ninja gcc-c++ python3 nodejs24 \
+            qt6-widgets-devel qt6-qml-devel qt6-quick-devel \
+            qt6-quickcontrols2-devel qt6-test-devel qt6-declarative-imports \
+            libplasma6-devel libplasma6-components plasma6-workspace \
+            kf6-kirigami-imports kpipewire6-imports kf6-kpackage \
+            konsole dejavu-fonts
+
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Check native models, rendering and package loading
+        run: bash scripts/check.sh
+
+      - name: Upload installable widget
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: spatial-apps
+          path: out/spatial-apps.plasmoid
+          if-no-files-found: error
