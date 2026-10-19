@@ -27,7 +27,7 @@ jobs:
             qt6-widgets-devel qt6-qml-devel qt6-quick-devel \
             qt6-quickcontrols2-devel qt6-test-devel qt6-declarative-imports \
             libplasma6-devel libplasma6-components plasma6-workspace \
-            kf6-kirigami-imports kpipewire6-imports kf6-kpackage \
+            kf6-extra-cmake-modules kf6-kirigami-imports kpipewire6-imports kf6-kpackage \
             konsole dejavu-fonts
 
       - name: Check out source

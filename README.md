@@ -40,7 +40,7 @@ The current Plasma Activity is the first test scope, rather than an implementati
 
 ## Develop and check
 
-The widget itself is QML/JavaScript and needs no compilation. Native integration checks additionally require CMake, Ninja, a C++20 compiler, Qt 6.8+ Core/Gui/Widgets/Qml/Quick/Test development packages, and Plasma/PlasmaQuick development packages.
+The widget itself is QML/JavaScript and needs no compilation. Native integration checks additionally require CMake, Ninja, a C++20 compiler, KDE Extra CMake Modules, Qt 6.8+ Core/Gui/Widgets/Qml/Quick/Test development packages, and Plasma/PlasmaQuick development packages.
 
 ```sh
 bash scripts/check.sh
